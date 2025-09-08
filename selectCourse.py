@@ -83,7 +83,7 @@ def finalSelect(driver, teachername):
 
             if not target_row:
                 print("未找到对应教师的课程")
-                time.sleep(1)
+                time.sleep(0.2)
                 attempt += 1
                 continue
 
@@ -119,12 +119,12 @@ def finalSelect(driver, teachername):
                     break
             if not found:
                 print("未找到选课按钮，等待后重试")
-                time.sleep(1)
+                time.sleep(0.2)
                 attempt += 1
                 continue
 
             # 再次检查是否已变为退选，每次都重新查找
-            time.sleep(1)
+            time.sleep(0.2)
             course_rows = WebDriverWait(driver, 10).until(
                 EC.presence_of_all_elements_located((By.CSS_SELECTOR, "tr.el-table__row"))
             )
@@ -149,11 +149,11 @@ def finalSelect(driver, teachername):
                         print("选课已成功(已变为退选按钮)")
                         return True
             print("选课未成功，准备重试")
-            time.sleep(1)
+            time.sleep(0.2)
             attempt += 1
         except Exception as e:
             print(f"选课失败: {e}，准备重试")
-            time.sleep(1)
+            time.sleep(0.2)
             attempt += 1
 
 # 示例调用
